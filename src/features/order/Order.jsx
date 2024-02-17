@@ -59,17 +59,18 @@ function Order() {
   console.log('==> order: ', order)
 
   return (
-    <div>
+    <div className="px-4 py-6 space-y-8">
       <div>
-        <h2>Status</h2>
+        <h2>Statuggggggggggggs</h2>
 
         <div>
           {priority && <span>Priority</span>}
-          <span>{status} order</span>
+          <span> {status} order</span>
         </div>
       </div>
 
       <div>
+        <p>Order Id: {id}</p>
         <p>
           {deliveryIn >= 0
             ? `Only ${calcMinutesLeft(estimatedDelivery)} minutes left 😃`
@@ -87,8 +88,10 @@ function Order() {
   )
 }
 
-export async function loader(params) {
-  const order = await getOrder(params.orderId)
+export async function loader(request) {
+  // console.log('params.orderId in Order loader func==> ', params.params.orderId)
+  const order = await getOrder(request.params.orderId)
+  // console.log('params.orderId in Order loader func==> ', order)
   return order
 }
 
